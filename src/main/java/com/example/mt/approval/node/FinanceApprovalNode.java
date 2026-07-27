@@ -12,7 +12,7 @@ public class FinanceApprovalNode extends AbstractApprovalNode {
     @Override
     public void handle(ApprovalContext ctx) {
         if (ctx.getAmount() > THRESHOLD) {
-            ctx.append("财务审批通过(金额 " + ctx.getAmount() + ")");
+            ctx.append("财务环节已处理(金额 " + ctx.getAmount() + ")");
         } else {
             ctx.append("财务免审(金额 " + ctx.getAmount() + " < 阈值)");
         }

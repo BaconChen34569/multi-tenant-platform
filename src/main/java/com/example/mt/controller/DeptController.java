@@ -4,6 +4,7 @@ import com.example.mt.common.Result;
 import com.example.mt.entity.Dept;
 import com.example.mt.entity.DeptTreeNode;
 import com.example.mt.service.DeptService;
+import com.baomidou.mybatisplus.core.metadata.IPage;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -30,5 +31,13 @@ public class DeptController {
     @GetMapping("/tree-stats")
     public Result<List<DeptTreeNode>> treeStats() {
         return Result.ok(deptService.treeWithStats());
+    }
+
+    /** 部门分页查询（支持按部门名搜索） */
+    @GetMapping("/page")
+    public Result<IPage<Dept>> page(@RequestParam(defaultValue = "1") long page,
+                                    @RequestParam(defaultValue = "10") long size,
+                                    @RequestParam(required = false) String keyword) {
+        return Result.ok(deptService.page(page, size, keyword));
     }
 }

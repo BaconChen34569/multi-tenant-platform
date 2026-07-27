@@ -36,8 +36,10 @@ CREATE TABLE approval_task (
     tenant_id  BIGINT NOT NULL COMMENT '隔离列',
     title      VARCHAR(128),
     applicant  VARCHAR(64),
+    amount     DECIMAL(12,2) DEFAULT 0 COMMENT '申请金额',
     status     VARCHAR(32),
     node_types VARCHAR(128),
+    execution_log TEXT COMMENT '提交时责任链执行的节点级轨迹',
     create_time DATETIME
 );
 

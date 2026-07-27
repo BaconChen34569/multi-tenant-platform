@@ -8,7 +8,7 @@ import org.springframework.stereotype.Component;
 public class LeaderApprovalNode extends AbstractApprovalNode {
     @Override
     public void handle(ApprovalContext ctx) {
-        ctx.append("主管审批通过: " + ctx.getTitle());
+        ctx.append("主管环节已处理: " + ctx.getTitle());
         passNext(ctx);
     }
 }
